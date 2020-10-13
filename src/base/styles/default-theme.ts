@@ -1,5 +1,6 @@
 import { css } from 'lit-element';
 
+// Define your Theme
 export let defaultTheme = css`
 	.dark {
 		--app-color: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
@@ -81,73 +82,32 @@ export let defaultTheme = css`
 		--app-error: #b10808;
 		--on-error: #fff; /* Blanco */
 	}
-
-	html {
-		--blue: #2674fc;
-	}
 `;
 
 /**
- * Injecta La fuente Ubuntu y las variables CSS
+ * Inject CSS
  */
 export function injectTheme() {
 	const link = document.createElement('link');
 	link.rel = 'stylesheet';
 	link.type = 'text/css';
-	link.href = 'https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&family=Roboto:400,500,700';
-	// @ts-ignore
-	if (window.appendProductSans == null) {
-		// @ts-ignore
-		window.appendProductSans = true;
-		document.head.appendChild(link);
-	}
-
+	link.href = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
+	document.head.appendChild(link);
 	const style = document.createElement('style');
 	style.innerHTML = defaultTheme.cssText;
 	document.head.appendChild(style);
 }
 
-type CallbackTheme = (theme: 'dark' | 'light') => any;
 export class Theme {
-	//#region ====== Change Theme listeners ======
-	static listeners: CallbackTheme[] = [];
-
-	static on(s: 'change', listener: CallbackTheme) {
-		switch (s) {
-			case 'change':
-				Theme.listeners.push(listener);
-		}
-	}
-
-	static remove(s: 'change', listener: (theme: string) => any) {
-		switch (s) {
-			case 'change':
-				Theme.listeners = Theme.listeners.filter(_ => _ != listener);
-		}
-	}
-	//#endregion ====== Change Theme listeners ======
-
-	static toogle(color?: 'dark' | 'light') {
-		let array: string[] = [];
-		if (color) {
-			array = [color == 'dark' ? 'light' : 'dark'];
-		} else {
-			array = Array.from(document.documentElement.classList.values());
-		}
-		Theme.setTheme(array.includes('dark') ? 'dark' : 'light');
-	}
-
 	static setTheme(color: 'dark' | 'light') {
 		if (color == 'dark') {
 			localStorage.theme = 'dark';
 			document.documentElement.classList.add('dark');
 			document.documentElement.classList.remove('light');
-			Theme.listeners.forEach(_ => _('dark'));
 		} else {
 			localStorage.theme = 'light';
 			document.documentElement.classList.remove('dark');
 			document.documentElement.classList.add('light');
-			Theme.listeners.forEach(_ => _('light'));
 		}
 	}
 }

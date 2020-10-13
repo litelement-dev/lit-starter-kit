@@ -14,21 +14,28 @@ export class AppPages extends CtLit {
 	static pages: Page[] = [
 		{
 			path: '/',
-			element: html`<home-app></home-app>`, // you cand use html``
+			element: html`<home-app></home-app>`,
 			from: () => import('../home/activities/home-app'),
 			auth: false,
 			title: () => `Page 1 • Example.com`
 		},
 		{
-			path: '/other/:wildcardPage',
-			element: html`<home-app></home-app>`,
-			from: () => import('../home/activities/home-app'),
+			path: '/404',
+			element: html`<app-404></app-404>`,
+			from: () => import('../base/app-404'),
+			auth: false,
+			title: () => `Page 2 • Example.com`
+		},
+		{
+			path: '/login',
+			element: html`<app-login></app-login>`,
+			from: () => import('../login/activities/app-login'),
 			auth: false,
 			title: () => `Page 2 • Example.com`
 		}
 	];
 
 	render() {
-		return html` <ct-router id="ctrouter" loginFallback="/404" .pages=${AppPages.pages}> </ct-router>`;
+		return html` <ct-router loginFallback="/login" loginFallback="/404" .pages=${AppPages.pages}> </ct-router>`;
 	}
 }
