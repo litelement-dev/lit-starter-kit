@@ -33,8 +33,6 @@ function setNewDict(str: any) {
 		// @ts-ignore
 		strings[key] = str[key];
 	});
-	// @ts-ignore
-	window.getLang = getLang;
 }
 
 export { strings };

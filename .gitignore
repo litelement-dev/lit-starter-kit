@@ -1,9 +1,9 @@
 .idea
 .git
-build
-node_modules
 .DS_Store
-dist/
 .history
-\.firebase/
+.firebase
+build
+dist
+node_modules
 *.log
