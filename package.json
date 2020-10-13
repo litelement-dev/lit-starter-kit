@@ -4,9 +4,7 @@
     "version": "1.0.0",
     "main": "index.html",
     "scripts": {
-        "ct": "yarn add file:/Users/herberth/Projects/Conectate/@conectate/ct-elements",
         "build": "webpack --mode production",
-        "dist": "yarn build && firebase deploy",
         "dev": "webpack-dev-server --mode development"
     },
     "dependencies": {

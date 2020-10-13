@@ -24,14 +24,14 @@ export class AppPages extends CtLit {
 			element: html`<app-404></app-404>`,
 			from: () => import('../base/app-404'),
 			auth: false,
-			title: () => `Page 2 • Example.com`
+			title: () => `404 • Example.com`
 		},
 		{
 			path: '/login',
 			element: html`<app-login></app-login>`,
 			from: () => import('../login/activities/app-login'),
 			auth: false,
-			title: () => `Page 2 • Example.com`
+			title: () => `Login • Example.com`
 		}
 	];
 

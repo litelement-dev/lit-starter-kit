@@ -17,9 +17,7 @@ Install dependencies:
 
 ```bash
 npm i
-```
-or 
-```bash
+#or
 yarn
 ```
 
