@@ -1,3 +1,8 @@
+/**
+ * @author Herberth Obregón
+ * @date 03/01/2021
+ * Add langs
+ */
 import { es } from './lang/es';
 // @ts-ignore
 const strings: { [key in keyof typeof es]: typeof es[key] } = {};

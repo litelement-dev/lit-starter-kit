@@ -34,11 +34,11 @@ There is a development HTML file located at `src/index.html` that you can view a
 To `build` and `run` the JavaScript version of your component (include watcher):
 
 ```bash
-npm start
+npm run dev
 ```
 or
 ```bash
-yarn start
+yarn dev
 ```
 
 

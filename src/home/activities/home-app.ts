@@ -1,4 +1,5 @@
 import { CtLit, html, property, customElement, css } from '@conectate/ct-lit';
+import { strings } from '../../../res/values/strings';
 
 @customElement('home-app')
 export class HomeApp extends CtLit {
@@ -11,6 +12,19 @@ export class HomeApp extends CtLit {
 	];
 
 	render() {
-		return html` <h1>Hello World</h1>`;
+		return html` <h1>${strings.hello_world}</h1>
+			<ul>
+				<li>
+					<a href="/">/ - Home</a>
+				</li>
+
+				<li>
+					<a href="/login">/login - Login</a>
+				</li>
+
+				<li>
+					<a href="/404">/404 - NotFound</a>
+				</li>
+			</ul>`;
 	}
 }

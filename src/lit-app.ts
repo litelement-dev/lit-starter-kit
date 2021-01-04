@@ -1,4 +1,4 @@
-import './base/app-pages';
+import './base/app-router';
 import AppLocalStorage from './base/app-localstorage';
 import { loadLang } from '../res/values/strings';
 import { css, CtLit, customElement, html, property } from '@conectate/ct-lit';
@@ -38,9 +38,9 @@ export class LitApp extends CtLit {
 
 	render() {
 		return html`
-			<header>Lit Starter App</header>
+			<header>LitElement Starter App</header>
 			<main>
-				<app-pages></app-pages>
+				<app-router></app-router>
 			</main>
 		`;
 	}

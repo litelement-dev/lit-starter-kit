@@ -2,8 +2,8 @@ import { CtLit, html, customElement, css } from '@conectate/ct-lit';
 import { Page } from '@conectate/ct-router';
 import '@conectate/ct-router';
 
-@customElement('app-pages')
-export class AppPages extends CtLit {
+@customElement('app-router')
+export class AppRouter extends CtLit {
 	static styles = [
 		css`
 			:host {
@@ -22,7 +22,7 @@ export class AppPages extends CtLit {
 		{
 			path: '/404',
 			element: html`<app-404></app-404>`,
-			from: () => import('../base/app-404'),
+			from: () => import('./app-404'),
 			auth: false,
 			title: () => `404 • Example.com`
 		},
@@ -36,6 +36,6 @@ export class AppPages extends CtLit {
 	];
 
 	render() {
-		return html` <ct-router loginFallback="/login" loginFallback="/404" .pages=${AppPages.pages}> </ct-router>`;
+		return html` <ct-router loginFallback="/login" loginFallback="/404" .pages=${AppRouter.pages}> </ct-router>`;
 	}
 }
