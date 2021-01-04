@@ -8,9 +8,15 @@ import { injectTheme, Theme } from './base/styles/default-theme';
 export class LitApp extends CtLit {
 	static styles = [
 		css`
-			:host {
-				display: block;
-				color: var(--on-background);
+			:host,
+			main {
+				display: flex;
+				flex-direction: column;
+				color: var(--color-on-background);
+				height: 100%;
+			}
+			app-router {
+				flex: 1;
 			}
 			header {
 				display: flex;
@@ -19,8 +25,8 @@ export class LitApp extends CtLit {
 				font-weight: bold;
 				padding: 0px 16px;
 				height: 56px;
-				color: var(--primary-color);
-				background: var(--app-surface);
+				color: var(--color-primary);
+				background: var(--color-surface);
 				box-shadow: rgba(0, 0, 0, 0.26) 0px 4px 11px 0px;
 				z-index: 90;
 				position: relative;
@@ -38,8 +44,8 @@ export class LitApp extends CtLit {
 
 	render() {
 		return html`
-			<header>LitElement Starter App</header>
 			<main>
+				<header>LitElement Starter App</header>
 				<app-router></app-router>
 			</main>
 		`;

@@ -1,86 +1,76 @@
 import { css } from 'lit-element';
 
 // Define your Theme
-export let defaultTheme = css`
+let defaultTheme = css`
 	.dark {
-		--app-color: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+		--color-primary: #2cb5e8;
+		--color-primary-medium: #2cb5e8b0;
+		--color-primary-light: #2cb5e82b;
+		--color-on-primary: #fff;
 
-		--dark-primary-color: #218cb3;
-		--dark-accent-color: #0fb8ad;
-
-		/* Blur */
-		--app-blur: rgba(35, 35, 37, 0.7);
-		--app-blur-dialog: rgba(35, 35, 37, 0.7);
-		--app-blur-surface: #1a2c3480;
+		--color-secondary: #0fb8ad;
+		--color-on-secondary: #fff;
 
 		/* Fondos */
-		--app-background: #111e23;
+		--color-background: #111e23;
 		/* Fondos Textos que aparecen en los fondos */
-		--on-background: #fff;
+		--color-on-background: #fff;
 
 		/* Fondos que estan en cima de los fondos (ct-cards) */
-		--app-surface: #1a2c34;
+		--color-surface: #1a2c34;
 		/* Fondos Textos que aparecen en los ct-cards */
-		--on-surface: #fff;
+		--color-on-surface: #fff;
+
+		--color-error: #cf6679;
+		--color-on-error: #fff;
+
 		--high-emphasis: #ffffffde;
-		--medium-emphasis: #fff9;
-		--app-disable: #ffffff61;
+		--medium-emphasis: #ffffff99;
+		--color-disable: #ffffff61;
 
-		--on-surface-opaque: #8e8e8e; /* Texto sencundarios */
-		--on-surface-dividers: #bbbbbb24; /* divisores */
-
-		--primary-color: #2cb5e8;
-		--on-primary: #fff;
-		--primary-color-medium: #2cb5e8b0;
-		--primary-color-light: #2cb5e82b;
-
-		--accent-color: #0fb8ad;
-		--on-accent: #fff;
-
-		--app-error: #cf6679;
-		--on-error: #000000;
+		--color-on-surface-opaque: #8e8e8e; /* Texto sencundarios */
+		--color-on-surface-dividers: #bbbbbb24; /* divisores */
+		--color-blur: rgba(35, 35, 37, 0.7);
+		--color-blur-surface: #1a2c34b3;
+		--color-app: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+		--dark-primary-color: #218cb3;
 	}
 
 	.light {
-		--app-color: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+		--color-primary: #2cb5e8;
+		--color-primary-medium: #2cb5e8b0;
+		--color-primary-light: #2cb5e82b;
+		--color-on-primary: #fff;
 
-		--dark-primary-color: #218cb3;
-		--dark-accent-color: #0fb8ad;
-
-		/* Blur */
-		--app-blur: rgba(255, 255, 255, 0.7);
-		--app-blur-surface: rgba(255, 255, 255, 0.7);
+		--color-secondary: #0fb8ad;
+		/* Color de objeto en cima de color de acento */
+		--color-on-secondary: #fff;
 
 		/* Fondos */
-		--app-background: #f7f7f8; /* Blanco */
-		--app-blur: rgba(255, 255, 255, 0.72);
+		--color-background: #f7f7f8;
 		/* Fondos Textos que aparecen en los fondos */
-		--on-background: #535353; /* Gris */
+		--color-on-background: #535353; /* Gris */
 
 		/* Fondos que estan en cima de los fondos (ct-cards) */
-		--app-surface: #ffffff; /* Blanco */
-
+		--color-surface: #ffffff;
 		/* Fondos Textos que aparecen en los ct-cards */
-		--on-surface: #535353; /* Gris */
+		--color-on-surface: #535353; /* Gris */
+
+		/* Color de objeto en cima de error */
+		--color-error: #b10808;
+		--color-on-error: #fff;
+
 		--high-emphasis: #000000de;
 		--medium-emphasis: #00000099;
-		--app-disable: #00000047;
+		--color-disable: #00000047;
 
-		--on-surface-opaque: #8e8e8e; /* Texto sencundarios */
-		--on-surface-dividers: #7c7c7c30; /* divisores */
-
-		/* Color de objeto en cima de color primario */
-		--primary-color: #2cb5e8;
-		--on-primary: #fff; /* Blanco */
-		--primary-color-medium: #2cb5e8b0;
-		--primary-color-light: #2cb5e82b;
-
-		--accent-color: #0fb8ad;
-		/* Color de objeto en cima de color de acento */
-		--on-accent: #fff; /* Blanco */
-		/* Color de objeto en cima de error */
-		--app-error: #b10808;
-		--on-error: #fff; /* Blanco */
+		/* Blur */
+		--color-blur: rgba(255, 255, 255, 0.7);
+		--color-blur-surface: rgba(255, 255, 255, 0.6);
+		--color-on-surface-opaque: #8e8e8e; /* Texto sencundarios */
+		--color-on-surface-dividers: #7c7c7c30; /* divisores */
+		--color-app: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+		--dark-primary-color: #218cb3;
 	}
 `;
 
