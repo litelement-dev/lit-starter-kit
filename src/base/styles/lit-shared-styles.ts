@@ -1,4 +1,4 @@
-import { css } from 'lit-element';
+import { css } from 'lit';
 
 // You Shared Styles
 export const litStyles = css`

@@ -26,6 +26,7 @@ module.exports = (env, options) => {
 				'@babel/plugin-proposal-logical-assignment-operators',
 				'@babel/plugin-transform-runtime',
 				'@babel/plugin-transform-async-to-generator',
+				'@babel/plugin-proposal-export-default-from',
 				[
 					'template-html-minifier',
 					{
@@ -60,11 +61,14 @@ module.exports = (env, options) => {
 		devtool: development ? 'source-map' : undefined,
 		resolve: {
 			// Add '.ts' and '.tsx' as resolvable extensions.
-			extensions: ['.ts', '.js', '.json']
+			extensions: ['.ts', '.js', '.json'],
+			alias: {
+				'lit/decorators': 'lit/decorators.js'
+			}
 		},
 		plugins: [
 			new webpack.DefinePlugin({
-				'process.env.NODE_ENV': JSON.stringify(development ? 'dev' : 'production')
+				'process.env.NODE_EN': JSON.stringify(development ? 'dev' : 'production')
 			}),
 			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
@@ -91,8 +95,7 @@ module.exports = (env, options) => {
 								comments: false
 							}
 						},
-						parallel: true,
-						sourceMap: true
+						parallel: true
 					})
 			].filter(_ => !!_)
 		},
@@ -116,7 +119,13 @@ module.exports = (env, options) => {
 				{
 					test: /\.svg$/,
 					loader: 'svg-inline-loader'
-				}
+				},
+				{
+					test: /\.m?js/,
+					resolve: {
+						fullySpecified: false
+					}
+				},
 			]
 		},
 		devServer: {
