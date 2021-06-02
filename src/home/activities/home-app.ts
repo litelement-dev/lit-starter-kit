@@ -1,5 +1,5 @@
 import { CtLit, html, property, customElement, css } from '@conectate/ct-lit';
-import { strings } from '../../../res/values/strings';
+import { strings } from '../../xconfig/strings';
 
 @customElement('home-app')
 export class HomeApp extends CtLit {

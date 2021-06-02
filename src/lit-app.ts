@@ -1,8 +1,8 @@
 import './base/app-router';
 import AppLocalStorage from './base/app-localstorage';
-import { loadLang } from '../res/values/strings';
+import { loadLang } from './xconfig/strings';
 import { css, CtLit, customElement, html } from '@conectate/ct-lit';
-import { property, query, queryAll, queryAssignedNodes, queryAsync, state, state as internalProperty } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { injectTheme, Theme } from './base/styles/default-theme';
 
 @customElement('lit-app')

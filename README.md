@@ -1,5 +1,8 @@
 # LitElement starter site
-## Litelement + Typescript + Webpack 
+
+this project has a ready to production configuration.
+
+## Litelement + Typescript + Vitejs + Rollup.js
 This project includes a **VERY sample site** to start using LitElement with TypeScript (you can also use JS).
 
 The project tries to have the same structure as an `Android project`. The idea is that it feels familiar and we develop with a standard (or as similar as possible)
@@ -23,21 +26,19 @@ yarn
 
 ## 🚀 Start
 
-This sample uses the Babel and webpack to produce JavaScript that runs in modern browsers.
+This sample uses the `Babel` and `esbuild` with `Vitejs` to produce JavaScript that runs in modern browsers.
 
 ### Dev Server
 
-This sample uses [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) for previewing the project without additional build steps. `webpack-dev-server` handles resolving Node-style "bare" import specifiers, which aren't supported in browsers. It also automatically transpiles Typescript to JavaScript files.
+This sample uses [Vitejs](https://vitejs.dev/) for previewing the project without additional build steps. `Vitejs` handles resolving Node-style "bare" import specifiers, which aren't supported in browsers. It also automatically transpiles Typescript to JavaScript files.
 
-There is a development HTML file located at `src/index.html` that you can view at http://localhost:8000.
+There is a development HTML file located at `index.html` that you can view at http://localhost:8000.
 
 To `build` and `run` the JavaScript version of your component (include watcher):
 
 ```bash
 npm run dev
-```
-or
-```bash
+# or
 yarn dev
 ```
 
