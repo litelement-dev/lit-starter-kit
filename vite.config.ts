@@ -1,6 +1,6 @@
 import { RollupBabelInputPluginOptions, babel } from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
-import copy from 'rollup-plugin-copy';
+import copy, { CopyOptions } from 'rollup-plugin-copy';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import summary from 'rollup-plugin-summary';
 import { terser } from 'rollup-plugin-terser';
@@ -20,25 +20,21 @@ const babelConfig: RollupBabelInputPluginOptions = {
 	presets: [['@babel/preset-env', { targets: { chrome: process.env.NODE_ENV == 'development' ? '90' : '55' }, debug: true }]]
 };
 
-const copyConfig = {
+const copyConfig: CopyOptions = {
+	hook: 'closeBundle',
 	targets: [
-		{ src: 'node_modules/@webcomponents', dest: './build/node_modules' },
-		{ src: 'res/index.universal.html', dest: 'build', rename: 'index.bak.html' },
-		{ src: 'res/manifest.json', dest: './build' },
-		{ src: 'res', dest: 'build' }
+		{ src: 'node_modules/@webcomponents', dest: 'dist/node_modules' },
+		{ src: 'public/index.universal.html', dest: 'dist', rename: 'index.html' },
+		{ src: 'res', dest: 'dist' }
 	]
 };
 let development = process.env.NODE_ENV != 'production';
 
-console.log('process.env.NODE_ENV ', process.env.NODE_ENV);
 // https://vitejs.dev/config/
 export default (opts: any) => {
 	return defineConfig({
 		server: {
-			port: 8000,
-			fsServe: {
-				root: '/'
-			}
+			port: 8000
 		},
 		define: {
 			'process.env.NODE_ENV': JSON.stringify(development ? 'development' : 'production'),
@@ -48,7 +44,6 @@ export default (opts: any) => {
 		build: {
 			target: 'chrome55',
 			assetsInlineLimit: 100000,
-			// "outDir": "build",
 			rollupOptions: {
 				input: {
 					app: './src/lit-app.ts'
@@ -62,7 +57,7 @@ export default (opts: any) => {
 					format: 'systemjs',
 					chunkFileNames: `${process.env.NODE_ENV == 'development' ? '[name].' : 'c.'}[hash].js`,
 					entryFileNames: '[name].bundle.js',
-					dir: 'build'
+					dir: 'dist'
 				},
 				plugins: [
 					// Minify HTML template literals
@@ -70,14 +65,14 @@ export default (opts: any) => {
 					babel(babelConfig),
 					// Resolve bare module specifiers to relative paths
 					resolve(),
-
+					// Copy res to dist folder
+					copy(copyConfig),
 					// Minify JS
 					terser({
 						module: true
 					}),
-					// @ts-ignore Print bundle summary
-					summary(),
-					copy(copyConfig)
+					// Print bundle summary
+					summary({}) as any
 				],
 				preserveEntrySignatures: false
 			}
