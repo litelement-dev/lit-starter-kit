@@ -11,6 +11,7 @@ export class AppRouter extends CtLit {
 			}
 		`
 	];
+	
 	static pages: Page[] = [
 		{
 			path: '/',

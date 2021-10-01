@@ -6,7 +6,9 @@ let defaultTheme = css`
 		--color-primary: #2cb5e8;
 		--color-primary-medium: #2cb5e8b0;
 		--color-primary-light: #2cb5e82b;
+        --color-primary-hover: #31c6fc;
 		--color-on-primary: #fff;
+		--color-app: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 
 		--color-secondary: #0fb8ad;
 		--color-on-secondary: #fff;
@@ -28,19 +30,16 @@ let defaultTheme = css`
 		--medium-emphasis: #ffffff99;
 		--color-disable: #ffffff61;
 
-		--color-on-surface-opaque: #8e8e8e; /* Texto sencundarios */
-		--color-on-surface-dividers: #bbbbbb24; /* divisores */
-		--color-blur: rgba(35, 35, 37, 0.7);
-		--color-blur-surface: #1a2c34b3;
-		--color-app: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-		--dark-primary-color: #218cb3;
+		--color-borders: #bbbbbb24; /* divisores */
 	}
 
 	.light {
 		--color-primary: #2cb5e8;
 		--color-primary-medium: #2cb5e8b0;
 		--color-primary-light: #2cb5e82b;
+        --color-primary-hover: #31c6fc;
 		--color-on-primary: #fff;
+		--color-app: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 
 		--color-secondary: #0fb8ad;
 		/* Color de objeto en cima de color de acento */
@@ -64,13 +63,7 @@ let defaultTheme = css`
 		--medium-emphasis: #00000099;
 		--color-disable: #00000047;
 
-		/* Blur */
-		--color-blur: rgba(255, 255, 255, 0.7);
-		--color-blur-surface: rgba(255, 255, 255, 0.6);
-		--color-on-surface-opaque: #8e8e8e; /* Texto sencundarios */
-		--color-on-surface-dividers: #7c7c7c30; /* divisores */
-		--color-app: linear-gradient(90deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-		--dark-primary-color: #218cb3;
+		--color-borders: #7c7c7c30;
 	}
 `;
 

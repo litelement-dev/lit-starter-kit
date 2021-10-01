@@ -17,32 +17,30 @@ const babelConfig: RollupBabelInputPluginOptions = {
 		'@babel/plugin-proposal-export-default-from'
 	],
 	babelrc: false,
-	presets: [['@babel/preset-env', { targets: { chrome: process.env.NODE_ENV == 'development' ? '90' : '55' }, debug: true }]]
+	presets: [['@babel/preset-env', { targets: { chrome: '72' }, debug: true }]]
 };
 
 const copyConfig: CopyOptions = {
 	hook: 'closeBundle',
 	targets: [
-		{ src: 'node_modules/@webcomponents', dest: 'dist/node_modules' },
+        { src: 'node_modules/@webcomponents/webcomponentsjs/*', dest: 'dist/node_modules/@webcomponents/webcomponentsjs' },
 		{ src: 'public/index.universal.html', dest: 'dist', rename: 'index.html' },
 		{ src: 'res', dest: 'dist' }
 	]
 };
-let development = process.env.NODE_ENV != 'production';
 
 // https://vitejs.dev/config/
-export default (opts: any) => {
+export default (opts: { mode: 'production' | 'development'; command: 'build' | 'serve' }) => {
 	return defineConfig({
 		server: {
 			port: 8000
 		},
 		define: {
-			'process.env.NODE_ENV': JSON.stringify(development ? 'development' : 'production'),
+			'process.env.NODE_ENV': JSON.stringify(opts.mode),
 			'process.env.VERSION': JSON.stringify(app.version)
 		},
 		plugins: [],
 		build: {
-			target: 'chrome55',
 			assetsInlineLimit: 100000,
 			rollupOptions: {
 				input: {
@@ -55,7 +53,7 @@ export default (opts: any) => {
 				output: {
 					// Legacy JS bundles (ES5 compilation and SystemJS module output)
 					format: 'systemjs',
-					chunkFileNames: `${process.env.NODE_ENV == 'development' ? '[name].' : 'c.'}[hash].js`,
+					chunkFileNames: `${opts.mode == 'development' ? '[name].' : 'c.'}[hash].js`,
 					entryFileNames: '[name].bundle.js',
 					dir: 'dist'
 				},
@@ -68,9 +66,13 @@ export default (opts: any) => {
 					// Copy res to dist folder
 					copy(copyConfig),
 					// Minify JS
-					terser({
-						module: true
-					}),
+                    terser({
+                        format: {
+                            comments: false
+                        },
+                        compress: false,
+                        module: true
+                    }),
 					// Print bundle summary
 					summary({}) as any
 				],

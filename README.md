@@ -22,6 +22,8 @@ Install dependencies:
 npm i
 #or
 yarn
+#or 
+pnpm i
 ```
 
 ## 🚀 Start

@@ -26,6 +26,7 @@ export class LitApp extends CtLit {
 				font-weight: bold;
 				padding: 0px 16px;
 				height: 56px;
+				min-height: 56px;
 				color: var(--color-primary);
 				background: var(--color-surface);
 				box-shadow: rgba(0, 0, 0, 0.26) 0px 4px 11px 0px;
